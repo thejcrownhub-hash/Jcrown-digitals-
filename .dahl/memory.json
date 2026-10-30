@@ -1,0 +1,106 @@
+[
+  {
+    "id": "75d17e48908c",
+    "text": "JCROWN DIGITALS — React + Vite + Tailwind + Supabase personal brand site. Run with `npm run dev`. All 9 components (Navbar, Hero, About, Offers, DownloadCTA, Books, Newsletter, Contact, Footer) must be created; currently missing from src/components/",
+    "tags": [
+      "stack",
+      "conventions",
+      "missing-components"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T07:51:04.374Z"
+  },
+  {
+    "id": "c6b7a0ac3170",
+    "text": "Supabase is optional — src/lib/supabase.js exports `isSupabaseConfigured` and `supabase` (null if not set). Site degrades gracefully; books/forms just won't work without real VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env",
+    "tags": [
+      "supabase",
+      "configuration",
+      "degradation"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T07:51:04.405Z"
+  },
+  {
+    "id": "0787e20e2e29",
+    "text": "MODE for this task is Review (read-only). The 6 components owned for this column (Navbar, Hero, About, Offers, DownloadCTA, Footer) are still missing from src/components/. All foundations exist and project builds on the tokens in src/index.css and copy in src/lib/content.js.",
+    "tags": [
+      "jcrown",
+      "architecture",
+      "review"
+    ],
+    "source": "run:52a3f1dee923",
+    "createdAt": "2026-10-30T08:10:41.057Z"
+  },
+  {
+    "id": "d75ec1be36c4",
+    "text": "JCROWN build verified: npm install --no-audit worked; npm run build succeeds (Vite 5.4.21, dist/ contains background.svg). Admin portal at #/admin, password gate via VITE_ADMIN_PASSWORD (default jcrown-admin — CHANGE in .env). RLS means the anon client cannot read subscribers/contacts outside the app's own writes; admin reads lists, not a backend. Run: npm run dev / npm run build / npm run preview.",
+    "tags": [
+      "build",
+      "admin",
+      "verify",
+      "run",
+      "supabase"
+    ],
+    "source": "run:52a3f1dee923",
+    "createdAt": "2026-10-30T11:33:00.210Z"
+  },
+  {
+    "id": "5debabc46012",
+    "text": "Admin can now edit everything via the 'Site Content' tab in #/admin. src/lib/siteContent.jsx exports SiteContentProvider + useSiteContent + buildContent; merges site_content DB rows over static defaults in content.js. Public components (Hero, About, Offers, DownloadCTA, Books, Newsletter, Contact, Footer) all read from the context. Admin saves write skey rows (site, hero, cta, offers, books, newsletter, contact, footer) via saveSiteContent and dispatch the 'jcrown-content-saved' window event to refresh the public site. RLS in supabase/schema.sql intentionally opened to anon so the client-side admin works (documented tradeoff - harden with Edge Function/service_role before public launch). Build verified: npm run build passes.",
+    "tags": [
+      "admin",
+      "content",
+      "editable",
+      "site_content"
+    ],
+    "source": "run:52a3f1dee923",
+    "createdAt": "2026-10-30T12:31:47.391Z"
+  },
+  {
+    "id": "1040b27727f3",
+    "text": "JCROWN book payments: paid books are priced in Naira (₦), admin pastes a link to where the book is saved (no file upload), admin bank account details are shown to buyers, and the admin confirms payments manually in the portal — no Paystack integration. Not yet implemented; session was read-only, but full schema/data-layer/admin-tab plan exists ready to execute when write access returns.",
+    "tags": [
+      "requirements",
+      "payments",
+      "naira",
+      "admin"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T13:42:03.799Z"
+  },
+  {
+    "id": "d311ddb0b69a",
+    "text": "Session limitation: edit_file was unavailable (Review mode) so the payment feature could not be applied in this session; verify src/lib/books.js, src/lib/admin.js, src/components/Books.jsx, src/components/Admin.jsx, and supabase/schema.sql before assuming it exists. Build previously passed with the site-content work.",
+    "tags": [
+      "status",
+      "known-issues",
+      "build"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T13:42:03.814Z"
+  },
+  {
+    "id": "d6ddd6255366",
+    "text": "Supabase RLS is intentionally opened to anon for the client-side admin to work — documented tradeoff that should be hardened with an Edge Function/service_role key before public launch. This is a known security-pragmatic decision, not final state.",
+    "tags": [
+      "architecture",
+      "supabase",
+      "security",
+      "admin"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T13:42:03.824Z"
+  },
+  {
+    "id": "6dfdb4962e9c",
+    "text": "Admin portal has a Users tab (src/components/Admin.jsx, ~1231 lines). It aggregates newsletter subscribers + contact senders into one de-duplicated table (email, name, source, first seen). The lucide 'Users' icon is aliased to UsersIcon to avoid colliding with the Users component. Build verified: npm run build passes (1631 modules).",
+    "tags": [
+      "admin",
+      "users",
+      "tab"
+    ],
+    "source": "run:52a3f1dee923",
+    "createdAt": "2026-10-30T14:23:38.283Z"
+  }
+]

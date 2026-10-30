@@ -1,0 +1,35 @@
+[
+  {
+    "id": "75d17e48908c",
+    "text": "JCROWN DIGITALS — React + Vite + Tailwind + Supabase personal brand site. Run with `npm run dev`. All 9 components (Navbar, Hero, About, Offers, DownloadCTA, Books, Newsletter, Contact, Footer) must be created; currently missing from src/components/",
+    "tags": [
+      "stack",
+      "conventions",
+      "missing-components"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T07:51:04.374Z"
+  },
+  {
+    "id": "c6b7a0ac3170",
+    "text": "Supabase is optional — src/lib/supabase.js exports `isSupabaseConfigured` and `supabase` (null if not set). Site degrades gracefully; books/forms just won't work without real VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env",
+    "tags": [
+      "supabase",
+      "configuration",
+      "degradation"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T07:51:04.405Z"
+  },
+  {
+    "id": "2f0c92081829",
+    "text": "Tailwind config: colors ink/charcoal/gold/ivory/muted, fonts Playfair Display + Inter, custom utility classes (container-x, eyebrow, btn-gold, gold-divider). Reveal.jsx wraps IntersectionObserver for 600ms scroll animations. All copy lives in src/lib/content.js",
+    "tags": [
+      "design-system",
+      "tailwind",
+      "utilities"
+    ],
+    "source": "auto:52a3f1dee923",
+    "createdAt": "2026-10-30T07:51:04.429Z"
+  }
+]

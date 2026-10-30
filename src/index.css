@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink font-body text-ivory antialiased;
+  }
+
+  /* Offset for the fixed 70px navbar when jumping to anchors */
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+
+  ::selection {
+    @apply bg-gold text-ink;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c9a84c;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-site px-6 md:px-10;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-gold;
+  }
+
+  .gold-divider {
+    @apply h-px w-16 bg-gold/60;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-bright hover:shadow-[0_10px_30px_-10px_rgba(201,168,76,0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold active:translate-y-0 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded border border-gold/60 bg-transparent px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-gold transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold active:translate-y-0 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .input-dark {
+    @apply w-full rounded border border-line bg-charcoal px-4 py-3 text-sm text-ivory transition-colors placeholder:text-muted/50 focus:border-gold focus:outline-none;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-xs text-danger;
+  }
+}
+
+/* Scroll-triggered reveals (see src/components/Reveal.jsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
